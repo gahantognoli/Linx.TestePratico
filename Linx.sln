@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A4C4F327-8846-4D89-8E66-01203D9A661A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{A5C7B5AF-48C9-497A-823D-98220F35C644}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Player", "Player", "{17BFFD73-2C46-4A63-AB0D-14E8DC6E1712}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8E5B6830-77C7-4F06-B0E2-96BEC57879FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linx.Player.API", "src\Linx.Player.API\Linx.Player.API.csproj", "{665493B8-0E61-4271-8F09-00C32DB189D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linx.Player.Domain", "src\Linx.Player.Domain\Linx.Player.Domain.csproj", "{3D84DBEE-5E4B-4D26-934E-C9E40F99B7BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linx.Player.Data", "src\Linx.Player.Data\Linx.Player.Data.csproj", "{0FF832C5-BC4C-4BC3-9D8A-C6346F5A80E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linx.Core", "src\Linx.Core\Linx.Core.csproj", "{A72496A1-D82E-4F4E-9D2F-8252D3F2588C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{665493B8-0E61-4271-8F09-00C32DB189D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{665493B8-0E61-4271-8F09-00C32DB189D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{665493B8-0E61-4271-8F09-00C32DB189D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{665493B8-0E61-4271-8F09-00C32DB189D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D84DBEE-5E4B-4D26-934E-C9E40F99B7BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D84DBEE-5E4B-4D26-934E-C9E40F99B7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D84DBEE-5E4B-4D26-934E-C9E40F99B7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D84DBEE-5E4B-4D26-934E-C9E40F99B7BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF832C5-BC4C-4BC3-9D8A-C6346F5A80E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF832C5-BC4C-4BC3-9D8A-C6346F5A80E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF832C5-BC4C-4BC3-9D8A-C6346F5A80E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF832C5-BC4C-4BC3-9D8A-C6346F5A80E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A72496A1-D82E-4F4E-9D2F-8252D3F2588C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A72496A1-D82E-4F4E-9D2F-8252D3F2588C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A72496A1-D82E-4F4E-9D2F-8252D3F2588C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A72496A1-D82E-4F4E-9D2F-8252D3F2588C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17BFFD73-2C46-4A63-AB0D-14E8DC6E1712} = {A4C4F327-8846-4D89-8E66-01203D9A661A}
+		{8E5B6830-77C7-4F06-B0E2-96BEC57879FE} = {A4C4F327-8846-4D89-8E66-01203D9A661A}
+		{665493B8-0E61-4271-8F09-00C32DB189D4} = {17BFFD73-2C46-4A63-AB0D-14E8DC6E1712}
+		{3D84DBEE-5E4B-4D26-934E-C9E40F99B7BB} = {17BFFD73-2C46-4A63-AB0D-14E8DC6E1712}
+		{0FF832C5-BC4C-4BC3-9D8A-C6346F5A80E2} = {17BFFD73-2C46-4A63-AB0D-14E8DC6E1712}
+		{A72496A1-D82E-4F4E-9D2F-8252D3F2588C} = {8E5B6830-77C7-4F06-B0E2-96BEC57879FE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEFE39FC-31AD-4C8D-AFDE-4F0933CDBD32}
+	EndGlobalSection
+EndGlobal
