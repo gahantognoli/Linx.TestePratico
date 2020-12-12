@@ -16,6 +16,10 @@ namespace Linx.Player.Data.Mappings
                 .HasColumnType("varchar(50)")
                 .IsRequired();
 
+            builder
+                .Property(p => p.Excluido)
+                .IsRequired();
+
             builder.ToTable("Artistas");
         }
     }

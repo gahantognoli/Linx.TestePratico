@@ -4,14 +4,16 @@ using Linx.Player.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Linx.Player.Data.Migrations
 {
     [DbContext(typeof(PlayerContext))]
-    partial class PlayerContextModelSnapshot : ModelSnapshot
+    [Migration("20201211224418_AlteracaoIdiomaMusicaParaInteiro")]
+    partial class AlteracaoIdiomaMusicaParaInteiro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +29,6 @@ namespace Linx.Player.Data.Migrations
 
                     b.Property<Guid>("ArtistaId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Excluido")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -47,9 +46,6 @@ namespace Linx.Player.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Excluido")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime>("InicioCarreira")
                         .HasColumnType("datetime2");
@@ -69,9 +65,6 @@ namespace Linx.Player.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("Excluido")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
@@ -89,9 +82,6 @@ namespace Linx.Player.Data.Migrations
 
                     b.Property<Guid>("AlbumId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Excluido")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("GeneroId")
                         .HasColumnType("uniqueidentifier");

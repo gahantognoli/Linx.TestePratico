@@ -8,7 +8,7 @@ namespace Linx.Core.Data
     public interface IRepository<T> : IDisposable where T : Entity
     {
         public IUnitOfWork UnitOfWork { get; }
-        void Adicionar(T entity);
+        Task Adicionar(T entity);
         void Atualizar(T entity);
         void Remover(Guid Id);
         Task<T> ObterPorId(Guid id);

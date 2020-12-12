@@ -12,19 +12,14 @@ namespace Linx.Player.Domain.Entities
         public Artista Artista { get; set; }
         public virtual ICollection<Musica> Musicas { get; set; }
 
-        public Album(string nome, Guid artistaId)
+        public Album(Guid id, string nome, Guid artistaId)
         {
+            Id = id;
             Nome = nome;
             ArtistaId = artistaId;
         }
 
         //E.F
         protected Album() { }
-
-        public void Validar()
-        {
-            Validacoes.ValidarSeVazio(Nome, "O campo nome não pode estar vazio.");
-            Validacoes.ValidarSeIgual(ArtistaId, Guid.Empty, "É necessário informar o artista do album.");
-        }
     }
 }

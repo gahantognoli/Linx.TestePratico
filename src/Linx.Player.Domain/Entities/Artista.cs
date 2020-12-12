@@ -1,7 +1,6 @@
 ﻿using Linx.Core.DomainObjects;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Linx.Player.Domain.Entities
 {
@@ -12,20 +11,14 @@ namespace Linx.Player.Domain.Entities
         
         public virtual ICollection<Album> Albuns { get; set; }
 
-        public Artista(string nome, DateTime inicioCarreira)
+        public Artista(Guid id, string nome, DateTime inicioCarreira)
         {
+            Id = id;
             Nome = nome;
             InicioCarreira = inicioCarreira;
-
-            Validar();
         }
 
         //E.F
         protected Artista() { }
-
-        public void Validar()
-        {
-            Validacoes.ValidarSeVazio(Nome, "O campo nome não pode estar vazio.");
-        }
     }
 }

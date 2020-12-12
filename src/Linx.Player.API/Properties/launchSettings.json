@@ -9,15 +9,15 @@
     }
   },
   "profiles": {
-    "IIS Express": {
+    "IIS Dev": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Linx.Player.API": {
+    "SelfHost - Dev": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

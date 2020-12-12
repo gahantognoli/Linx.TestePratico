@@ -1,5 +1,7 @@
-﻿using Linx.Player.Data.Repositories;
+﻿using Linx.Core.Notifications;
+using Linx.Player.Data.Repositories;
 using Linx.Player.Domain.Repositories;
+using Linx.Player.Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Linx.Player.API.Configuration
@@ -12,6 +14,13 @@ namespace Linx.Player.API.Configuration
             services.AddScoped<IGeneroRepository, GeneroRepository>();
             services.AddScoped<IAlbumRepository, AlbumRepository>();
             services.AddScoped<IArtistaRepository, ArtistaRepository>();
+
+            services.AddScoped<IMusicaService, MusicaService>();
+            services.AddScoped<IGeneroService, GeneroService>();
+            services.AddScoped<IAlbumService, AlbumService>();
+            services.AddScoped<IArtistaService, ArtistaService>();
+
+            services.AddScoped<INotificador, Notificador>();
 
             return services;
         }

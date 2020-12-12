@@ -5,6 +5,7 @@ using Linx.Player.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Linx.Player.Data.Repositories
@@ -20,15 +21,16 @@ namespace Linx.Player.Data.Repositories
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public async void Adicionar(Artista entity) => await _context.Artistas.AddAsync(entity);
+        public async Task Adicionar(Artista entity) => await _context.Artistas.AddAsync(entity);
 
         public void Atualizar(Artista entity) => _context.Update(entity);
 
-        public void Remover(Guid Id) => _context.Remove(_context.Artistas.Find(Id));
+        public void Remover(Guid Id) => _context.Artistas.Find(Id).Excluido = true;
 
-        public async Task<Artista> ObterPorId(Guid id) => await _context.Artistas.FindAsync(id);
+        public async Task<Artista> ObterPorId(Guid id) => await _context.Artistas
+            .Include(p => p.Albuns).AsNoTracking().FirstOrDefaultAsync(p => p.Id == id && !p.Excluido);
 
-        public async Task<IEnumerable<Artista>> ObterTodos() => await _context.Artistas.ToListAsync();
+        public async Task<IEnumerable<Artista>> ObterTodos() => await _context.Artistas.AsNoTracking().Where(p => !p.Excluido).ToListAsync();
 
         public void Dispose() => _context.Dispose();
     }

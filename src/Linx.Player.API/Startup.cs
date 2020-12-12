@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace Linx.Player.API
 {
@@ -17,13 +18,18 @@ namespace Linx.Player.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ResolveDependencies();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddApiConfiguration(Configuration);
+
+            services.AddSwaggerConfig();
+
+            services.ResolveDependencies();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwaggerConfig();
             app.UseApiConfiguration(env);
         }
     }

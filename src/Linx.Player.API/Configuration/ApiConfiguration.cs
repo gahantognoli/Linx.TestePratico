@@ -5,10 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Linx.Player.API.Configuration
 {
@@ -19,7 +15,18 @@ namespace Linx.Player.API.Configuration
             services.AddDbContext<PlayerContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("PlayerDBConnection")));
 
-            services.AddControllers();
+            services.AddCors(p =>
+            {
+                p.AddDefaultPolicy(policy => 
+                    policy
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+
+            services.AddControllers()
+                .AddNewtonsoftJson(options => 
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             return services;
         }
@@ -34,6 +41,8 @@ namespace Linx.Player.API.Configuration
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

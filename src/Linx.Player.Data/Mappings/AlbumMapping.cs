@@ -17,6 +17,10 @@ namespace Linx.Player.Data.Mappings
                 .IsRequired();
 
             builder
+                .Property(p => p.Excluido)
+                .IsRequired();
+
+            builder
                 .HasOne(p => p.Artista)
                 .WithMany(p => p.Albuns)
                 .OnDelete(DeleteBehavior.ClientSetNull);
