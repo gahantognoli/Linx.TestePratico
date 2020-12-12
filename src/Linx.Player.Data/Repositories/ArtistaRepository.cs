@@ -1,10 +1,12 @@
-﻿using Linx.Core.Data;
+﻿using Dapper;
+using Linx.Core.Data;
 using Linx.Player.Data.Context;
 using Linx.Player.Domain.Entities;
 using Linx.Player.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,5 +35,19 @@ namespace Linx.Player.Data.Repositories
         public async Task<IEnumerable<Artista>> ObterTodos() => await _context.Artistas.AsNoTracking().Where(p => !p.Excluido).ToListAsync();
 
         public void Dispose() => _context.Dispose();
+
+        public async Task<IEnumerable<Artista>> ObterArtistasComMaisMusicas()
+        {
+            IEnumerable<Artista> artistas;
+
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                artistas = await connection.QueryAsync<Artista>(
+                    "usp_Artistas_ComMaisMusicas",
+                    commandType: CommandType.StoredProcedure);
+            }
+
+            return artistas;
+        }
     }
 }

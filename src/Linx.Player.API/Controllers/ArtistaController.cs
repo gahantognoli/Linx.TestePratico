@@ -41,6 +41,12 @@ namespace Linx.Player.API.Controllers
             return _mapper.Map<ArtistaViewModel>(await _artistaRepository.ObterPorId(id));
         }
 
+        [HttpGet("por-quantidade-musicas")]
+        public async Task<IEnumerable<ArtistaViewModel>> ObterArtistasComMaisMusicas()
+        {
+            return _mapper.Map<IEnumerable<ArtistaViewModel>>(await _artistaRepository.ObterArtistasComMaisMusicas());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Adicionar(ArtistaViewModel artistaViewModel)
         {
