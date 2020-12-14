@@ -4,56 +4,64 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h2>Músicas</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<hr />
+
+<a asp-action="Cadastrar" class="botao botao-verde">Cadastrar</a>
+
+
+<form asp-action="Index" method="get" class="caixa-pesquisa">
+    <select name="pesquisarPor" id="pesquisarPor" class="input">
+        <option value="">Selecione...</option>
+        <option value="artista">Artista</option>
+        <option value="genero">Genero</option>
+    </select>
+    <input type="text" name="valor" id="valor" class="input" />
+    <button type="submit" class="botao botao-azul">Pesquisar</button>
+</form>
+
+
+<table class="tabela">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Título
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Titulo)
+                Idioma
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Idioma)
+                Álbum
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AlbumId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GeneroId)
+                Gênero
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Idioma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AlbumId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GeneroId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idioma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero.Nome)
+                </td>
+                <td>
+                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="botao botao-azul">Visualizar</a>
+                    <a asp-action="Atualizar" asp-route-id="@item.Id" class="botao botao-amarelo">Editar</a>
+                    <a asp-action="Remover" asp-route-id="@item.Id" class="botao botao-vermelho">Remover</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

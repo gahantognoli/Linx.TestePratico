@@ -33,7 +33,9 @@ namespace Linx.Player.Data.Repositories
             .Include(p => p.Genero).Include(p => p.Album).ThenInclude(p => p.Artista)
             .AsNoTracking().FirstOrDefaultAsync(p => p.Id == id && !p.Excluido);
 
-        public async Task<IEnumerable<Musica>> ObterTodos() => await _context.Musicas.AsNoTracking().Where(p => !p.Excluido).ToListAsync();
+        public async Task<IEnumerable<Musica>> ObterTodos() => await _context.Musicas.AsNoTracking()
+            .Include(p => p.Album).Include(p => p.Genero)
+            .Where(p => !p.Excluido).ToListAsync();
 
         public async Task<IEnumerable<Musica>> ObterPorGenero(string genero)
         {

@@ -19,7 +19,7 @@ namespace Linx.WebApp.MVC
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.ResolveDependencies();
         }
