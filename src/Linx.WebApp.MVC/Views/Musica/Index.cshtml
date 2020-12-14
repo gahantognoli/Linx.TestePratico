@@ -5,11 +5,9 @@
 }
 
 <h2>Músicas</h2>
-
 <hr />
 
 <a asp-action="Cadastrar" class="botao botao-verde">Cadastrar</a>
-
 
 <form asp-action="Index" method="get" class="caixa-pesquisa">
     <select name="pesquisarPor" id="pesquisarPor" class="input">
@@ -48,7 +46,7 @@
                     @Html.DisplayFor(modelItem => item.Titulo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Idioma)
+                    @(item.Idioma == 1 ? "Inglês" : "Português")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Album.Nome)

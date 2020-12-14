@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Linx.WebApp.MVC.ViewModels
@@ -7,8 +9,8 @@ namespace Linx.WebApp.MVC.ViewModels
     {
         public Guid Id { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [MaxLength(50, ErrorMessage = "O tamanho máximo do campo {0} é {1}")]
+        //[Required(ErrorMessage = "O campo {0} é obrigatório")]
+        //[MaxLength(50, ErrorMessage = "O tamanho máximo do campo {0} é {1}")]
         public string Titulo { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
@@ -18,6 +20,9 @@ namespace Linx.WebApp.MVC.ViewModels
 
         public virtual AlbumViewModel Album { get; set; }
         public virtual GeneroViewModel Genero { get; set; }
+
+        public IEnumerable<SelectListItem> Albuns { get; set; }
+        public IEnumerable<SelectListItem> Generos { get; set; }
 
         public ResponseResult ResponseResult { get; set; }
     }

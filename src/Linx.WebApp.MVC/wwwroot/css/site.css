@@ -117,6 +117,17 @@ body {
         background-color: #eee;
     }
 
+
+.grupo-input label {
+    display: block;
+    margin-top: 7px;
+}
+
+.grupo-input .input {
+    width: 100%;
+    
+}
+
 .input {
     padding: 5px;
     border: 1px solid #ddd;
@@ -129,16 +140,25 @@ body {
     border-radius: 5px;
     border: 1px solid #ddd;
     transition: all .3s ease;
+    min-width: 40px;
 }
 
     .botao:hover {
         text-decoration: none;
     }
 
-.botao-azul {
-    background-color: #1861d5;
-    color: white;
+.grupo-botao {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
 }
+
+    
+
+    .botao-azul {
+        background-color: #1861d5;
+        color: white;
+    }
 
     .botao-azul:hover {
         background-color: #2676f5;

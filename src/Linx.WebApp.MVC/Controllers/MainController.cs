@@ -8,9 +8,9 @@ namespace Linx.WebApp.MVC.Controllers
     {
         protected bool ResponsePossuiErros(ResponseResult response)
         {
-            if (response != null && response.Errors.Mensagens.Any())
+            if (response != null && response.Errors.Any())
             {
-                foreach (var mensagem in response.Errors.Mensagens)
+                foreach (var mensagem in response.Errors)
                 {
                     ModelState.AddModelError(string.Empty, mensagem);
                 }

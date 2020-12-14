@@ -20,7 +20,8 @@ namespace Linx.WebApp.MVC.Services
         {
             var options = new JsonSerializerOptions()
             {
-                PropertyNameCaseInsensitive = true
+                PropertyNameCaseInsensitive = true,
+                IgnoreNullValues = true
             };
 
             return JsonSerializer.Deserialize<T>(await responseMessage.Content.ReadAsStringAsync(), options);

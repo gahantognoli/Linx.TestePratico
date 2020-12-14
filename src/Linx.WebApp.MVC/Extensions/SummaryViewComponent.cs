@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Linx.WebApp.MVC.Extensions
 {
-    public class ErrosViewComponent : ViewComponent
+    public class SummaryViewComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            return View("");
         }
     }
 }

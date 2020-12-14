@@ -1,8 +1,10 @@
 ﻿using Linx.WebApp.MVC.Services;
 using Linx.WebApp.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Linx.WebApp.MVC.Controllers
@@ -10,10 +12,16 @@ namespace Linx.WebApp.MVC.Controllers
     public class MusicaController : MainController
     {
         private readonly IMusicaService _musicaService;
+        private readonly IAlbumService _albumService;
+        private readonly IGeneroService _generoService;
 
-        public MusicaController(IMusicaService musicaService)
+        public MusicaController(IMusicaService musicaService,
+            IAlbumService albumService,
+            IGeneroService generoService)
         {
             _musicaService = musicaService;
+            _albumService = albumService;
+            _generoService = generoService;
         }
 
         public async Task<IActionResult> Index(string pesquisarPor = null, string valor = null)
@@ -26,38 +34,58 @@ namespace Linx.WebApp.MVC.Controllers
             return View(await _musicaService.ObterPorId(id));
         }
 
-        public IActionResult Cadastrar()
+        public async Task<IActionResult> Cadastrar()
         {
-            return View();
+            var musicaViewModel = new MusicaViewModel();
+            await PopularSelectList(musicaViewModel);
+            return View(musicaViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Cadastrar(MusicaViewModel musicaViewModel)
         {
-            if (!ModelState.IsValid) return View(musicaViewModel);
+            if (!ModelState.IsValid)
+            {
+                await PopularSelectList(musicaViewModel);
+                return View(musicaViewModel);
+            }
 
             var musicaResponse = await _musicaService.Adicionar(musicaViewModel);
 
-            if (ResponsePossuiErros(musicaResponse.ResponseResult)) return View(musicaResponse);
+            if (ResponsePossuiErros(musicaResponse.ResponseResult))
+            {
+                await PopularSelectList(musicaResponse);
+                return View(musicaResponse);
+            }
 
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Atualizar(Guid id)
         {
-            return View(await _musicaService.ObterPorId(id));
+            var musicaViewModel = await _musicaService.ObterPorId(id);
+            await PopularSelectList(musicaViewModel);
+            return View(musicaViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Atualizar(Guid id, MusicaViewModel musicaViewModel)
         {
-            if (!ModelState.IsValid) return View(musicaViewModel);
+            if (!ModelState.IsValid)
+            {
+                await PopularSelectList(musicaViewModel);
+                return View(musicaViewModel);
+            }
 
             var musicaResponse = await _musicaService.Atualizar(id, musicaViewModel);
 
-            if (ResponsePossuiErros(musicaResponse.ResponseResult)) return View(musicaResponse);
+            if (ResponsePossuiErros(musicaResponse.ResponseResult))
+            {
+                await PopularSelectList(musicaResponse);
+                return View(musicaResponse);
+            }
 
             return RedirectToAction("Index");
         }
@@ -73,7 +101,7 @@ namespace Linx.WebApp.MVC.Controllers
         {
             var musicaResponse = await _musicaService.Remover(id);
 
-            if (ResponsePossuiErros(musicaResponse.ResponseResult)) 
+            if (ResponsePossuiErros(musicaResponse.ResponseResult))
             {
                 var musica = await _musicaService.ObterPorId(id);
                 musica.ResponseResult = musicaResponse.ResponseResult;
@@ -92,6 +120,12 @@ namespace Linx.WebApp.MVC.Controllers
             }
 
             return await _musicaService.ObterTodos();
+        }
+
+        private async Task PopularSelectList(MusicaViewModel musicaViewModel)
+        {
+            musicaViewModel.Albuns = (await _albumService.ObterTodos()).Select(p => new SelectListItem(p.Nome, p.Id.ToString()));
+            musicaViewModel.Generos = (await _generoService.ObterTodos()).Select(p => new SelectListItem(p.Nome, p.Id.ToString()));
         }
     }
 }
