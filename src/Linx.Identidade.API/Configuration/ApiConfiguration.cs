@@ -29,7 +29,7 @@ namespace Linx.Identidade.API.Configuration
 
             app.UseRouting();
 
-            app.UseAuthConfiguration();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

@@ -20,8 +20,6 @@ namespace Linx.Identidade.API.Configuration
                 .AddErrorDescriber<IdentityMensagensPortugues>()
                 .AddDefaultTokenProviders();
 
-            services.AddJwtConfiguration(configuration);
-
             return services;
         }
     }
