@@ -19,6 +19,8 @@ namespace Linx.WebApp.MVC
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentityConfiguration();
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.ResolveDependencies();
@@ -44,7 +46,7 @@ namespace Linx.WebApp.MVC
 
             app.UseMiddleware<ExceptionMiddleware>();
 
-            app.UseAuthorization();
+            app.UseIdentityConfiguration();
 
             app.UseEndpoints(endpoints =>
             {

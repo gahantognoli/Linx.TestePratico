@@ -9,8 +9,8 @@ namespace Linx.WebApp.MVC.ViewModels
     {
         public Guid Id { get; set; }
 
-        //[Required(ErrorMessage = "O campo {0} é obrigatório")]
-        //[MaxLength(50, ErrorMessage = "O tamanho máximo do campo {0} é {1}")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [MaxLength(50, ErrorMessage = "O tamanho máximo do campo {0} é {1}")]
         public string Titulo { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]

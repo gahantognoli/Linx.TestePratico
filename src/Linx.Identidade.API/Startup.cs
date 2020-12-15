@@ -1,11 +1,10 @@
-using Linx.Player.API.Configuration;
+using Linx.Identidade.API.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using AutoMapper;
 
-namespace Linx.Player.API
+namespace Linx.Identidade.API
 {
     public class Startup
     {
@@ -18,20 +17,16 @@ namespace Linx.Player.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Startup));
+            services.AddIdentityConfiguration(Configuration);
 
             services.AddApiConfiguration(Configuration);
-
-            services.AddJwtConfiguration(Configuration);
-
-            services.AddSwaggerConfig();
-
-            services.ResolveDependencies();
+         
+            services.AddSwaggerConfiguration();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSwaggerConfig();
+            app.UseSwaggerConfiguration();
             app.UseApiConfiguration(env);
         }
     }

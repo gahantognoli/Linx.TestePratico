@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Linx.WebApp.MVC.Extensions
@@ -20,6 +21,12 @@ namespace Linx.WebApp.MVC.Extensions
             }
             catch (CustomHttpResponseException ex)
             {
+                if (ex.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    httpContext.Response.Redirect($"/login?ReturnUrl={httpContext.Request.Path}");
+                    return;
+                }
+
                 httpContext.Response.StatusCode = (int)ex.StatusCode;
             }
         }

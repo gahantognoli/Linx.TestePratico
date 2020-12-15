@@ -26,10 +26,15 @@ namespace Linx.Player.API.Controllers
 
         protected ActionResult CustomBadRequest()
         {
-            return BadRequest(new
+            return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                errors = _notificador.ObterNotificacoes().Select(e => e.Mensagem)
-            });
+                { "Mensagens", _notificador.ObterNotificacoes().Select(e => e.Mensagem).ToArray() }
+            }));
+
+            //return BadRequest(new
+            //{
+            //    errors = _notificador.ObterNotificacoes().Select(e => e.Mensagem)
+            //});
         }
 
         protected async Task<bool> Commit<T>(IRepository<T> repositorio) where T : Entity

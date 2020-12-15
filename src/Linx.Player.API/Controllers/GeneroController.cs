@@ -4,6 +4,7 @@ using Linx.Player.API.ViewModels;
 using Linx.Player.Domain.Entities;
 using Linx.Player.Domain.Repositories;
 using Linx.Player.Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Linx.Player.API.Controllers
 {
+    [Authorize]
     [Route("api/generos")]
     public class GeneroController : MainController
     {

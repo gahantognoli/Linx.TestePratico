@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Linx.Core.Notifications;
 using Linx.Player.API.ViewModels;
 using Linx.Player.Domain.Entities;
 using Linx.Player.Domain.Repositories;
 using Linx.Player.Domain.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Linx.Player.API.Controllers
 {
+    [Authorize]
     [Route("api/artistas")]
     public class ArtistaController : MainController
     {
