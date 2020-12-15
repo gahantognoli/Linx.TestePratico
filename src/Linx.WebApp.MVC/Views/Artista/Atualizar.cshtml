@@ -4,38 +4,31 @@
     ViewData["Title"] = "Atualizar";
 }
 
-<h1>Atualizar</h1>
-
-<h4>ArtistaViewModel</h4>
+<h2>Atualizar Artista</h2>
 <hr />
+
+<vc:Summary></vc:Summary>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Atualizar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+            <input type="hidden" asp-for="Id" />
+            <div class="grupo-input">
+                <label asp-for="Nome"></label>
+                <input asp-for="Nome" class="input" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="InicioCarreira" class="control-label"></label>
-                <input asp-for="InicioCarreira" class="form-control" />
+            <div class="grupo-input">
+                <label asp-for="InicioCarreira"></label>
+                <input asp-for="InicioCarreira" class="input" />
                 <span asp-validation-for="InicioCarreira" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="grupo-botao">
+                <input type="submit" value="Salvar" class="botao botao-verde mr-1" />
+                <a asp-action="Index" class="botao botao-vermelho">Voltar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Linx.WebApp.MVC.ViewModels
 {
@@ -17,6 +16,8 @@ namespace Linx.WebApp.MVC.ViewModels
 
         public ArtistaViewModel Artista { get; set; }
         public virtual ICollection<MusicaViewModel> Musicas { get; set; }
+
+        public IEnumerable<SelectListItem> Artistas { get; set; }
 
         public ResponseResult ResponseResult { get; set; }
     }

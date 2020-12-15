@@ -4,33 +4,22 @@
     ViewData["Title"] = "Detalhes";
 }
 
-<h1>Detalhes</h1>
 
-<div>
-    <h4>AlbumViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ArtistaId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ArtistaId)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+<h2>Detalhes Álbum</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="grupo-input">
+            <label asp-for="Nome"></label>
+            <input asp-for="Nome" class="input" disabled="disabled" />
+        </div>
+        <div class="grupo-input">
+            <label asp-for="ArtistaId" class="control-label">Artista</label>
+            <input asp-for="Artista.Nome" class="input" disabled="disabled" />
+        </div>
+        <div class="grupo-botao">
+            <a asp-action="Index" class="botao botao-vermelho">Voltar</a>
+        </div>
+    </div>
 </div>
